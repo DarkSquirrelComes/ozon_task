@@ -25,9 +25,9 @@ def check_expected_fields(head: List[Text]):
         raise ValueError(f"No fields ({', '.join(bad_fields)}) in input file")
 
 def print_goods(goods: defaultdict):
-    print("good_name, total_cost, total_quantity")
+    print("good_name,total_cost,total_quantity")
     for name in goods:
-        print(name, goods[name]["total_cost"], goods[name]["total_quantity"], sep=', ')
+        print(name, goods[name]["total_cost"], goods[name]["total_quantity"], sep=',')
 
 if __name__ == "__main__":
     with file_from_arguments() as csvfile:
