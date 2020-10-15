@@ -5,8 +5,6 @@ from sys import stderr
 
 from collections import defaultdict
 
-from typing import List, Text
-
 
 EXPECTED_FIELDS = {"good_name", "cost", "quantity"}
 
@@ -19,11 +17,6 @@ def file_from_arguments() -> io.TextIOWrapper:
         )
     return parser.parse_args().i
 
-def check_expected_fields(head: List[Text]):
-    if not EXPECTED_FIELDS.issubset(head):
-        bad_fields = EXPECTED_FIELDS - set(head)
-        raise ValueError(f"No fields ({', '.join(bad_fields)}) in input file")
-
 def print_goods(goods: defaultdict):
     print("good_name,total_cost,total_quantity")
     for name in goods:
@@ -34,9 +27,9 @@ if __name__ == "__main__":
         reader = csv.DictReader(csvfile)
 
         goods = defaultdict(lambda: {
-                    "total_cost": 0,
-                    "total_quantity": 0
-                })
+            "total_cost": 0,
+            "total_quantity": 0
+            })
 
         for row in reader:
             try:
